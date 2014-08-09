@@ -17,6 +17,10 @@ exports.nodeBefore = function (node) {
             token.next = next;
         }
     } else if ('EmptyStatement' === node.type) {
+        // FIXME: Basically, setting value to an empty string
+        // and changing type to "EmptyStatement" for "WhiteSpace",
+        // "Indent", and "LineBreak" is a workaround to prevent a bug.
+        // See https://github.com/bulyshko/esformatter-semicolons/issues/2
         var token = node.startToken;
         var prev = token.prev;
 
