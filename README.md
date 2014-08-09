@@ -4,8 +4,8 @@
 
 ## Installation
 
-```bash
-$ npm install esformatter-semicolons
+```
+npm install esformatter-semicolons
 ```
 
 ## Usage
