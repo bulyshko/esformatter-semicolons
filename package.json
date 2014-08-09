@@ -18,5 +18,9 @@
     "url": "https://github.com/bulyshko/esformatter-semicolons"
   },
   "bugs": "https://github.com/bulyshko/esformatter-semicolons/issues",
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {
+    "esformatter": "0.4.1",
+    "mocha": "1.21.4"
+  }
 }
