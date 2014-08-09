@@ -2,10 +2,12 @@
 
 [esformatter][esformatter] plugin for adding missing and removing unnecessary semicolons.
 
+[![Build Status](https://travis-ci.org/bulyshko/esformatter-semicolons.svg?branch=master)](https://travis-ci.org/bulyshko/esformatter-semicolons)
+
 ## Installation
 
-```bash
-$ npm install esformatter-semicolons
+```
+npm install esformatter-semicolons
 ```
 
 ## Usage

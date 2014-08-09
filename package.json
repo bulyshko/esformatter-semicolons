@@ -1,22 +1,29 @@
 {
-    "name": "esformatter-semicolons",
-    "version": "1.0.0",
-    "descriptions": "esformatter plugin for adding missing and removing unnecessary semicolons",
-    "keywords": [
-        "esformatter",
-        "plugin",
-        "semicolons"
-    ],
-    "author": {
-        "name": "Romuald Bulyshko",
-        "email": "romuald@bulyshko.com",
-        "url": "https://bulyshko.com"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/bulyshko/esformatter-semicolons"
-    },
-    "bugs": "https://github.com/bulyshko/esformatter-semicolons/issues",
-    "main": "index.js"
+  "name": "esformatter-semicolons",
+  "version": "1.0.1",
+  "descriptions": "esformatter plugin for adding missing and removing unnecessary semicolons",
+  "keywords": [
+    "esformatter",
+    "plugin",
+    "semicolons"
+  ],
+  "author": {
+    "name": "Romuald Bulyshko",
+    "email": "romuald@bulyshko.com",
+    "url": "https://bulyshko.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bulyshko/esformatter-semicolons"
+  },
+  "bugs": "https://github.com/bulyshko/esformatter-semicolons/issues",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*-test.js"
+  },
+  "devDependencies": {
+    "esformatter": "0.4.1",
+    "mocha": "1.21.4"
+  }
 }
