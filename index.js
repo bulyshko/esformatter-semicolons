@@ -14,6 +14,11 @@ exports.nodeBefore = function (node) {
                 next: token.next,
                 root: token.root
             };
+            if (token.next) {
+                token.next.prev = next;
+            } else if (token.root) {
+                token.root.endToken = next;
+            }
             token.next = next;
         }
     } else if ('EmptyStatement' === node.type) {
