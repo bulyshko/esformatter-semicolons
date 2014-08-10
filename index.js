@@ -9,7 +9,7 @@ exports.nodeBefore = function(node) {
     }
 
     if (!isSemicolon(token)) {
-      var next = {
+      var semicolon = {
         type: 'Punctuator',
         value: ';',
         prev: token,
@@ -17,13 +17,13 @@ exports.nodeBefore = function(node) {
         root: token.root
       };
       if (token.next) {
-        token.next.prev = next;
+        token.next.prev = semicolon;
       } else if (token.root) {
-        token.root.endToken = next;
+        token.root.endToken = semicolon;
       }
-      token.next = next;
+      token.next = semicolon;
       if (end) {
-        node.endToken = next;
+        node.endToken = semicolon;
       }
     }
   } else if ('EmptyStatement' === node.type) {
