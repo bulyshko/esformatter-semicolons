@@ -1,25 +1,35 @@
 exports.nodeBefore = function(node) {
   if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement'].indexOf(node.type)) {
+    var end = true;
     var token = node.endToken;
 
     while (isEmpty(token) || isComment(token)) {
+      if (end) {
+        end = false;
+      }
       token = token.prev;
     }
 
     if (!isSemicolon(token)) {
-      var next = {
+      var semicolon = {
         type: 'Punctuator',
         value: ';',
         prev: token,
         next: token.next,
         root: token.root
       };
+
       if (token.next) {
-        token.next.prev = next;
+        token.next.prev = semicolon;
       } else if (token.root) {
-        token.root.endToken = next;
+        token.root.endToken = semicolon;
       }
-      token.next = next;
+
+      token.next = semicolon;
+
+      if (end) {
+        node.endToken = semicolon;
+      }
     }
   } else if ('EmptyStatement' === node.type) {
     // FIXME: Basically, setting value to an empty string
