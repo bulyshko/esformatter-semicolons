@@ -4,7 +4,9 @@ exports.nodeBefore = function(node) {
     var token = node.endToken;
 
     while (isEmpty(token) || isComment(token)) {
-      end = false;
+      if (end) {
+        end = false;
+      }
       token = token.prev;
     }
 
