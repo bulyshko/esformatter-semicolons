@@ -1,8 +1,10 @@
 exports.nodeBefore = function(node) {
   if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement'].indexOf(node.type)) {
+    var end = true;
     var token = node.endToken;
 
     while (isEmpty(token) || isComment(token)) {
+      end = false;
       token = token.prev;
     }
 
@@ -20,6 +22,9 @@ exports.nodeBefore = function(node) {
         token.root.endToken = next;
       }
       token.next = next;
+      if (end) {
+        node.endToken = next;
+      }
     }
   } else if ('EmptyStatement' === node.type) {
     // FIXME: Basically, setting value to an empty string
