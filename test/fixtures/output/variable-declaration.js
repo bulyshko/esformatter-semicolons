@@ -18,3 +18,6 @@ var s = function() {};
 var t = function() {
   // u
 }; /* v */
+
+var w = 0;
+w += 1;

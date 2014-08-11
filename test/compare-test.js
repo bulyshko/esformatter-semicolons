@@ -20,6 +20,14 @@ describe('compare input/output', function() {
     it('should be added to expression statements', function() {
       check('expression-statement');
     });
+
+    it('should be added to break statements', function() {
+      check('break-statement');
+    });
+
+    it('should be added to continue statements', function() {
+      check('continue-statement');
+    });
   });
 
   describe('unnecessary semicolons', function() {
