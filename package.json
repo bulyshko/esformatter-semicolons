@@ -1,6 +1,6 @@
 {
   "name": "esformatter-semicolons",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "esformatter plugin for adding missing and removing unnecessary semicolons",
   "keywords": [
     "esformatter",

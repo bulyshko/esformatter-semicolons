@@ -1,5 +1,7 @@
 exports.nodeBefore = function(node) {
-  if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement'].indexOf(node.type)) {
+  if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement',
+    'ContinueStatement', 'BreakStatement'].indexOf(node.type)
+  ) {
     var end = true;
     var token = node.endToken;
 
@@ -10,7 +12,7 @@ exports.nodeBefore = function(node) {
       token = token.prev;
     }
 
-    if (!isSemicolon(token)) {
+    if (!isSemicolon(token) && !isLoop(node.parent)) {
       var semicolon = {
         type: 'Punctuator',
         value: ';',
@@ -50,18 +52,17 @@ exports.nodeBefore = function(node) {
 };
 
 function isEmpty(token) {
-  return token &&
-    (token.type === 'WhiteSpace' ||
-    token.type === 'Indent' ||
-    token.type === 'LineBreak');
+  return token && ~['WhiteSpace', 'Indent', 'LineBreak'].indexOf(token.type);
 }
 
 function isComment(token) {
-  return token &&
-    (token.type === 'LineComment' ||
-    token.type === 'BlockComment');
+  return token && ~['LineComment', 'BlockComment'].indexOf(token.type);
 }
 
 function isSemicolon(token) {
   return token && token.type === 'Punctuator' && token.value === ';';
+}
+
+function isLoop(node) {
+  return node && ~['ForStatement', 'ForInStatement'].indexOf(node.type);
 }
