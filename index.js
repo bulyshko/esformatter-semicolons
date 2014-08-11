@@ -52,16 +52,11 @@ exports.nodeBefore = function(node) {
 };
 
 function isEmpty(token) {
-  return token &&
-    (token.type === 'WhiteSpace' ||
-    token.type === 'Indent' ||
-    token.type === 'LineBreak');
+  return token && ~['WhiteSpace', 'Indent', 'LineBreak'].indexOf(token.type);
 }
 
 function isComment(token) {
-  return token &&
-    (token.type === 'LineComment' ||
-    token.type === 'BlockComment');
+  return token && ~['LineComment', 'BlockComment'].indexOf(token.type);
 }
 
 function isSemicolon(token) {
