@@ -1,5 +1,7 @@
 exports.nodeBefore = function(node) {
-  if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement'].indexOf(node.type)) {
+  if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement',
+    'ContinueStatement', 'BreakStatement'].indexOf(node.type)
+  ) {
     var end = true;
     var token = node.endToken;
 
