@@ -10,7 +10,7 @@ exports.nodeBefore = function(node) {
       token = token.prev;
     }
 
-    if (!isSemicolon(token)) {
+    if (!isSemicolon(token) && !isLoop(node.parent)) {
       var semicolon = {
         type: 'Punctuator',
         value: ';',
@@ -64,4 +64,8 @@ function isComment(token) {
 
 function isSemicolon(token) {
   return token && token.type === 'Punctuator' && token.value === ';';
+}
+
+function isLoop(node) {
+  return node && ~['ForStatement', 'ForInStatement'].indexOf(node.type);
 }
