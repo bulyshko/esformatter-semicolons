@@ -1,7 +1,13 @@
+var HOOKS = [
+  'ExpressionStatement', 'VariableDeclaration', 'ReturnStatement',
+  'ContinueStatement', 'BreakStatement', 'ImportDeclaration'
+];
+var MODULE_EXPORT_HOOKS = [
+  'ExportAllDeclaration', 'ExportDefaultDeclaration', 'ExportNamedDeclaration'
+];
+
 exports.nodeBefore = function(node) {
-  if (~['ExpressionStatement', 'VariableDeclaration', 'ReturnStatement',
-    'ContinueStatement', 'BreakStatement'].indexOf(node.type)
-  ) {
+  if (shouldAppendSemicolon(node)) {
     var end = true;
     var token = node.endToken;
 
@@ -61,6 +67,27 @@ exports.nodeBefore = function(node) {
     token.value = '';
   }
 };
+
+function shouldAppendSemicolon(node) {
+  if (~HOOKS.indexOf(node.type)) {
+    return true;
+  }
+
+  if (~MODULE_EXPORT_HOOKS.indexOf(node.type)) {
+    if (!node.declaration) {
+      return true;
+    }
+
+    if (~HOOKS.concat(
+        ['Literal', 'ArrowFunctionExpression']
+      ).indexOf(node.declaration.type)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 function isEmpty(token) {
   return token && ~['WhiteSpace', 'Indent', 'LineBreak'].indexOf(token.type);
