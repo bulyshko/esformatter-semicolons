@@ -12,7 +12,18 @@ exports.nodeBefore = function(node) {
       token = token.prev;
     }
 
-    if (!isSemicolon(token) && !isLoop(node.parent)) {
+    if (isSemicolon(token)) {
+      // FIXME: This is used to remove white spaces and line breaks before the ";"
+      // See: https://github.com/millermedeiros/esformatter/issues/334
+      var last = token.prev;
+
+      while (isEmpty(last)) {
+        last = last.prev;
+      }
+
+      token.prev = last;
+      last.next = token;
+    } else if (!isSemicolon(token) && !isLoop(node.parent)) {
       var semicolon = {
         type: 'Punctuator',
         value: ';',
