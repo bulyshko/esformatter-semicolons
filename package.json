@@ -23,7 +23,7 @@
     "test": "mocha test/*-test.js"
   },
   "devDependencies": {
-    "esformatter": "0.4.1",
-    "mocha": "1.21.4"
+    "esformatter": "0.7.1",
+    "mocha": "2.2.5"
   }
 }
