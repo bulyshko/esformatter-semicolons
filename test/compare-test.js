@@ -28,6 +28,10 @@ describe('compare input/output', function() {
     it('should be added to continue statements', function() {
       check('continue-statement');
     });
+
+    it('should be added to module import and export statements', function() {
+      check('module-statement');
+    });
   });
 
   describe('unnecessary semicolons', function() {
