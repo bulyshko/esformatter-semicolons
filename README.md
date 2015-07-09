@@ -22,6 +22,10 @@ Add to your esformatter config file:
 }
 ```
 
+## Contributors
+
+* [Antoine Lehurt](https://github.com/kewah)
+
 ## License
 
 Released under the [MIT license][license].
