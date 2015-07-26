@@ -39,6 +39,12 @@ describe('compare input/output', function() {
       check('empty-statement');
     });
   });
+
+  describe('fixtures', function() {
+    it('should not add semicolons to object definitions', function() {
+      check('simple-object-statement');
+    })
+  })
 });
 
 function check(name) {

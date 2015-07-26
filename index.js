@@ -70,6 +70,9 @@ exports.nodeBefore = function(node) {
 
 function shouldAppendSemicolon(node) {
   if (~HOOKS.indexOf(node.type)) {
+    if (node.parent && node.parent.type === 'LabeledStatement') {
+      return false;
+    }
     return true;
   }
 
