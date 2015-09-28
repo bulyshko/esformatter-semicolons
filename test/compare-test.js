@@ -43,8 +43,11 @@ describe('compare input/output', function() {
   describe('fixtures', function() {
     it('should not add semicolons to object definitions', function() {
       check('simple-object-statement');
-    })
-  })
+    });
+    it('should not add semicolons to for...in and for...of statements', function() {
+      check('for-statement');
+    });
+  });
 });
 
 function check(name) {
