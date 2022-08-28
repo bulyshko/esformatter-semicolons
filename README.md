@@ -2,16 +2,21 @@
 
 [esformatter][esformatter] plugin for adding missing and removing unnecessary semicolons.
 
-[![Build Status](https://travis-ci.org/bulyshko/esformatter-semicolons.svg?branch=master)](https://travis-ci.org/bulyshko/esformatter-semicolons)
+**This package is no longer supported.**
 
-## Installation
+## <s>Installation</s>
+
+<s>
 
 ```
 npm install esformatter-semicolons
 ```
 
-## Usage
+</s>
 
+## <s>Usage</s>
+
+<s>
 Add to your esformatter config file:
 
 ```json
@@ -21,6 +26,8 @@ Add to your esformatter config file:
   ]
 }
 ```
+
+</s>
 
 ## Contributors
 
